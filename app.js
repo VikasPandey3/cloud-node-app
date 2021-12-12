@@ -97,6 +97,6 @@ app.post('/',(req,res)=>{
 // })
 
 // this is used to listen a specific port!
-app.listen(process.env.PORT||7777,function(){
-	console.log(`port is active at${process.env.PORT}`);
+app.listen(7777,function(){
+	console.log(`port is active at 7777}`);
 })
