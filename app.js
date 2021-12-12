@@ -100,3 +100,8 @@ app.post('/',(req,res)=>{
 app.listen(3000,function(){
 	console.log(`port is active at 3000`);
 })
+process.on('SIGINT', function() {
+	console.log("\nGracefully shutting down from SIGINT (Ctrl-C)");
+	// some other closing procedures go here
+	process.exit(1);
+ });
