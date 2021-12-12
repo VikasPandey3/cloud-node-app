@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File to zip conersion</title>
+</head> 
+<body>
+    <h1>Fileuplad</h1>
+    <!-- <form method="POST" action="/" enctype="multipart/form-data">
+        <input type="file" name="file" multiple/>
+        <input type="submit" value="upload"/>
+    </form> -->
+    <input id="input" type="file" name="file" multiple/>
+</body>
+<script>
+    document.getElementById("input").addEventListener('change',(e)=>{
+        uploadFile(e.target.files);
+    })
+    const uploadFile = (files) => {
+        const fd = new FormData();
+        for(let i=0;i<files.length;i++){
+            fd.append("files",files[i]);
+        }
+    
+
+    // send `POST` request
+        fetch('/', {
+            method: 'POST',
+            body: fd
+        })
+        .then(res => res.blob())
+        .then(response =>{
+            console.log(response);
+            var blob = new Blob([response], {type: "application/zip"});
+            var zipname=Date.now();
+            const downloadLink = document.createElement('a');
+            downloadLink.href = window.URL.createObjectURL(blob);
+            downloadLink.setAttribute('download', `${zipname}`+".zip");
+            document.body.appendChild(downloadLink);
+            downloadLink.click();
+            downloadLink.remove();
+    })
+    .catch(err => console.error(err));
+    }
+</script>
+</html>
