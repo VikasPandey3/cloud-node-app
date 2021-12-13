@@ -12,6 +12,9 @@
   "dependencies": {
     "adm-zip": "^0.5.9",
     "express": "^4.17.1",
-    "express-fileupload": "^1.2.1"
+    "express-fileupload": "^1.2.1",
+    "knex": "^0.95.14",
+    "pg": "^8.7.1",
+    "pug": "^3.0.2"
   }
 }
